@@ -1,0 +1,87 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(154, 231, 231);
+}
+
+#main-menu {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .main-container {
+        background: rgba(255,255,255,0.5);
+        width: 500px;
+        height: 600px;
+        border-radius: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem;
+    }
+
+    .menu-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menu-buttons {
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            border: none;
+            margin: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .menu-btn:hover {
+            background: rgba(216, 216, 216, 0.5);
+        }
+    }
+}
+
+#game {
+    .game-container {
+        text-align: center;
+    }
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .game-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5rem;
+    }
+}
+
+#card {
+    width: 100%;
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        .num {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .new-card {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    .matched {
+        background: red;
+    }
+}
