@@ -9,7 +9,7 @@ export default function Main(props) {
                     <p>Welcome to bingo, win by covering a complete horizontal, vertical or diagonal line.</p>
                 </div>
                 <div className="menu-buttons">
-                    <button className="menu-btn" onClick={props.startGame}>START GAME</button>
+                    <button className="menu-btn" onClick={props.startGame}>NEXT</button>
                 </div>
             </div>
         </section>
