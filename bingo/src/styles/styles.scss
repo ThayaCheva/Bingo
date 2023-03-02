@@ -48,6 +48,10 @@ body {
     .menu-header {
         @include center;
         flex-direction: column;
+
+        p {
+            text-align: center;
+        }
     }
 
     .menu-buttons {
@@ -83,15 +87,15 @@ body {
 
     .prevNum {
         width: 50%;
-        height: 400px;
         background: $game-background;   
         border: 1px solid rgb(96,96,96);
         border-radius: 15px;
+        padding: 1.5rem;
 
         .prevNum-container {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
-            padding: 1.5rem;
+            padding: 1.5rem;    
         }
     }
 
@@ -102,6 +106,7 @@ body {
     .card-container {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
+        margin: 1.5rem;
         .num {
             width: 100px;
             height: 100px;
@@ -109,7 +114,6 @@ body {
                 z-index: 10;
             }
         }
-        margin: 1.5rem;
     }
 
     .matched {

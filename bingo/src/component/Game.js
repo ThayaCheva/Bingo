@@ -6,6 +6,21 @@ export default function Game() {
     const [numBall, setNumBall] = React.useState(0)
     const [numArray, setNumArray] = React.useState([])
     const [pulledArray, setPulledArray] = React.useState(generateBalls())
+    
+    
+    function Timer() {
+        const [time, setTime] = React.useState(10)
+        React.useEffect(() => {
+            setTimeout(() => setTime(time - 1), 1000)
+            if (time === 1) {
+                setTime(10)
+                getBall()
+            }
+            console.log(time)
+        }, [time])
+        return <h1>Time till next number: {time}</h1>
+    }
+
 
     function generateBalls() {
         let arr = []
@@ -35,15 +50,15 @@ export default function Game() {
                 <div className="game-header">
                     <h1>BINGO</h1>
                     <h1>Current Number: {numBall}</h1>
+                    {startGame && <Timer/>}
                 </div>
                 <div className="game-card">
                     <Card player={1} startGame={startGame}/>
                     <Card player={2} startGame={startGame}/>
                 </div>
-                <button className="btn start-btn" onClick={() => {setStartGame(prevState => !prevState)}}>START GAME</button>
-                <button className="btn start-btn" onClick={() => {getBall()}}>get num</button>
+                {!startGame && <button className="btn start-btn" onClick={() => {setStartGame(prevState => !prevState)}}>START GAME</button>}
                 <div className="prevNum">
-                    <h1>Previous Number</h1>
+                    <h1>Previous Numbers ({100 - numArray.length} Left)</h1>
                     <div className="prevNum-container">
                         {numArray.map(num => <p>{num}</p>)}
                     </div>
