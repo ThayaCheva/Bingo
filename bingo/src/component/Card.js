@@ -7,14 +7,14 @@ export default function Card(props) {
         const isBingo = (bingoH() || bingoV() || bingoD())
         if (isBingo) {
             props.setBingo({player: props.player, isBingo: true})
-            console.log("BINGO!!!")
         }
     }, [card])
 
     function generateCard() {
         let arr = []
         for (let i = 0; i < 25; i++) {
-            arr.push(genNum(i))
+            let num = Math.floor(Math.random() * 100) + 1
+            arr.push(genNum(num))
         }
         return arr
     }
@@ -57,7 +57,7 @@ export default function Card(props) {
                 count += 1
             }
             if (count === 5) {
-                return 
+                return true
             }
         }
         count = 0
@@ -106,8 +106,6 @@ export default function Card(props) {
                 }
             </div>
             {!props.startGame && <button className="btn new-card" onClick={()=>getNewCard()}>New Card</button>}
-            <button className="btn new-card"  onClick={() => bingoD()}></button>
-            {/* {bingo && <h1>BINGO</h1>} */}
         </section>
     )
 }   

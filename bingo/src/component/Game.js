@@ -1,14 +1,13 @@
 import React from 'react'
 import Card from './Card'
 
-export default function Game() {
+export default function Game(props) {
     const [startGame, setStartGame] = React.useState(false)
     const [currentBall, setCurrentBall] = React.useState(0)
     const [prevNums, setPrevNums] = React.useState([])
     const [ballNum, setBallNum] = React.useState(generateBalls())
     const [bingo, setBingo] = React.useState({player: 1, isBingo: false})
-    
-    
+
     function Timer() {
         const [time, setTime] = React.useState(10)
         React.useEffect(() => {
@@ -45,9 +44,19 @@ export default function Game() {
         setCurrentBall(removed)
         setBallNum(temp)
     }
+
+    function resetGame() {
+        props.setStart(false)
+    }
     
     return (
         <section id="game">
+            {bingo.isBingo && <div className="game-over-container">
+                <div className="game-over">
+                    <h1>Player {bingo.player} has won!!</h1>
+                    <button className="btn" onClick={() => resetGame()}>Reset Game</button>
+                </div>
+            </div>}
             <div className="game-container">
                 <div className="game-header">
                     <h1>BINGO</h1>
@@ -65,7 +74,6 @@ export default function Game() {
                         {prevNums.map(num => <p>{num}</p>)}
                     </div>
                 </div>
-                {bingo.isBingo && <h1>Player {bingo.player} bingo</h1>}
             </div>
         </section>
     )

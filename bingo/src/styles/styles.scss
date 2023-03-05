@@ -2,12 +2,18 @@
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 
-$main-background: rgb(154, 231, 231);
+@font-face {
+    font-family: TiltNeon;
+    src: url("C:/Users/Jerry/Desktop/Bingo/bingo/public/TiltNeon-Regular-VariableFont_XROT,YROT.ttf");
+}
+
+$main-background: rgba(24,34,69,255);
 $game-background: rgba(255,255,255,0.5);
-$button-background: rgba(255, 255, 255, 0.5);
-$button-hover: rgba(216, 216, 216, 0.5);
+$button-background: linear-gradient(80deg, rgba(0,129,255,1) 50%, rgba(0,164,255,1) 100%);
+$desc-text: rgba(255,255,255,0.5);
 
 @mixin center() {
     display: flex;
@@ -21,36 +27,48 @@ body {
 
 .btn {
     background: $button-background;
-    border: 1px solid rgb(96, 96, 96);
+    border: none;
     border-radius: 5px;
     padding: 1rem;
-}
-
-.btn:hover {
-    background: $button-hover; 
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 #main-menu {
     @include center;
     width: 100vw;
     height: 100vh;
+    justify-content: space-evenly;
     .main-container {
-        background: $game-background;
-        width: 500px;
-        height: 600px;
-        border-radius: 5%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 3rem;
+    }
+
+    img {
+        width: 70%; 
     }
 
     .menu-header {
-        @include center;
-        flex-direction: column;
-
+        color: #fff;
+        margin-bottom: 3rem;
+        h1 {
+            font-size: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            margin-bottom: 1rem;
+            span {
+                position: relative;
+                font-size: 128px;
+                left: -6px;
+            }
+        }
         p {
-            text-align: center;
+            max-width: 450px;
+            color: $desc-text;
         }
     }
 
@@ -59,24 +77,47 @@ body {
             background: $button-background;
             padding: 1rem;
             border: none;
-            margin: 1rem;
             cursor: pointer;
             border-radius: 5px;
-        }
-
-        .menu-btn:hover {
-            background: $button-hover;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
         }
     }
 }
 
 #game {
+    .game-over-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+    
+    .game-over {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: $main-background;
+        z-index: 10;
+        padding: 3rem;
+        border-radius: 5px;
+        text-transform: uppercase;
+        h1 {
+            margin-bottom: 1rem;
+        }
+    }
+
     .game-container {
         text-align: center;
-    }
-    .game-container {
         @include center;
         flex-direction: column; 
+        padding: 3rem;
     }
     
     .game-card {
@@ -87,11 +128,10 @@ body {
 
     .prevNum {
         width: 50%;
-        background: $game-background;   
-        border: 1px solid rgb(96,96,96);
+        border: 1px solid #fff;
         border-radius: 15px;
         padding: 1.5rem;
-
+        margin-top: 3rem;
         .prevNum-container {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
@@ -103,13 +143,21 @@ body {
 
 #card {
     width: 100%;
+    border: 1px solid #fff;
+    padding: 1rem;
+    margin: 3rem 0;
+
     .card-container {
         display: grid;
+        grid-gap: 1rem;
         grid-template-columns: repeat(5, 1fr);
         margin: 1.5rem;
+        padding: 1rem;
         .num {
-            width: 100px;
-            height: 100px;
+            width: 75px;
+            height: 75px;
+            background: none;
+            border: 1px solid #fff;
             .card-value {
                 z-index: 10;
             }
@@ -126,10 +174,81 @@ body {
     .matched::before {
         position: absolute;
         content: '';
-        width: 75px;
-        height: 75px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        background: red;
+        border: 1px solid #fff;
         z-index: 1;
+    }
+}
+
+.bingo-logo {
+    font-family: 'Neon', sans-serif;
+    position: relative;
+    font-size: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        span:first-child {
+            position: relative;
+            font-size: 46px;
+        }
+        span:nth-child(2) {
+            position: relative;
+            font-size: 72px;
+            left: -1px;
+        }
+        span:last-child {
+            position: relative;
+            left: -5px;
+        }
+    }
+    .circle {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        box-shadow:
+        inset 0 0 25px #fff,      /* inner white */
+        inset 20px 0 50px #f0f,   /* inner left magenta short */
+        inset -20px 0 50px #0ff,  /* inner right cyan short */
+        inset 20px 0 10px #f0f,  /* inner left magenta broad */
+        inset -20px 0 10px #0ff, /* inner right cyan broad */
+        0 0 10px #fff,            /* outer white */
+        -10px 0 50px #f0f,        /* outer left magenta */
+        10px 0 50px #0ff;         /* outer right cyan */
+        z-index: -1;
+    }
+    
+    .card {
+        position: absolute;
+        left: 200px;
+        top: 5px;
+        width: 100px;
+        height: 120px;
+        border: 5px solid #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        border-radius: 5px;
+        .card-grid {
+            position: relative;
+            top: -6px;
+            border: 1px solid #fff;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            .grid-items {
+                border: inherit;
+                width: 15px;
+                height: 15px;
+            }
+        }
+
     }
 }
