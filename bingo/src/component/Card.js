@@ -1,20 +1,82 @@
 import React from 'react'
 import {nanoid} from 'nanoid'
 export default function Card(props) {
-    const [card, setCard] = React.useState(newGrid())
-    function newGrid() {
-        const numbers = [] 
-        for (let i = 0; i < 25; i++) {
-            numbers[i] = genNum()
+    const [card, setCard] = React.useState(generateCard())
+
+    React.useEffect(() => {
+        const isBingo = (bingoH() || bingoV() || bingoD())
+        if (isBingo) {
+            props.setBingo({player: props.player, isBingo: true})
+            console.log("BINGO!!!")
         }
-        return numbers
+    }, [card])
+
+    function generateCard() {
+        let arr = []
+        for (let i = 0; i < 25; i++) {
+            arr.push(genNum(i))
+        }
+        return arr
     }
 
-    function genNum() {
+    function bingoH() {
+        let maxCol = 5
+        for (let row = 0; row < 5; row++) {
+            let count = 0
+            for (let col = row * 5; col < maxCol; col++) {
+                if (card[col].isMatched) {
+                    count += 1
+                }
+                if (count === 5) {
+                    return true
+                }
+            }
+            maxCol = maxCol + 5
+        }
+    }
+
+    function bingoV() {
+        for (let col = 0; col < 5; col++) {
+            let count = 0
+            for (let row = col; row < 25; row += 5) {
+                if (card[row].isMatched) {
+                    count += 1
+                    console.log(count)
+                }
+                if (count === 5) {
+                    return true
+                }
+            }
+        }
+    }
+
+    function bingoD() {
+        let count = 0
+        for (let i = 0; i < 25; i += 6) {
+            if (card[i].isMatched) {
+                count += 1
+            }
+            if (count === 5) {
+                return 
+            }
+        }
+        count = 0
+        for (let i = 4; i < 25; i += 4) {
+            if (card[i].isMatched) {
+                count += 1
+                console.log(count)
+            }
+            if (count === 5) {
+                return true
+            }
+        }
+    }
+
+    function genNum(value) {
         return ( 
             {
                 id: nanoid(),
-                value: Math.floor(Math.random() * 100),
+                value: value,
                 isMatched: false
             }
         )
@@ -23,7 +85,7 @@ export default function Card(props) {
     function getNewCard() {
         const gameStart = true
         if (gameStart) {
-            setCard(newGrid())
+            setCard(generateCard())
         }
     }
 
@@ -44,6 +106,8 @@ export default function Card(props) {
                 }
             </div>
             {!props.startGame && <button className="btn new-card" onClick={()=>getNewCard()}>New Card</button>}
+            <button className="btn new-card"  onClick={() => bingoD()}></button>
+            {/* {bingo && <h1>BINGO</h1>} */}
         </section>
     )
-}
+}   
