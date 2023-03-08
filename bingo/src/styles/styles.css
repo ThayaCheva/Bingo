@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  color: #fff;
 }
 
 @font-face {
@@ -10,11 +9,12 @@
 }
 body {
   font-family: "TiltNeon", sans-serif;
-  background: rgb(24, 34, 69);
+  background: #f0f0f0;
+  overflow-y: hidden;
 }
 
 .btn {
-  background: linear-gradient(80deg, rgb(0, 129, 255) 50%, rgb(0, 164, 255) 100%);
+  background: #F4E2C8;
   border: none;
   border-radius: 5px;
   padding: 1rem;
@@ -25,31 +25,32 @@ body {
 }
 
 #main-menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
   width: 100vw;
   height: 100vh;
-  justify-content: space-evenly;
 }
 #main-menu .main-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #main-menu img {
   width: 70%;
 }
 #main-menu .menu-header {
-  color: #fff;
+  color: #555;
   margin-bottom: 3rem;
 }
 #main-menu .menu-header h1 {
+  line-height: 70px;
   font-size: 32px;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 #main-menu .menu-header h1 span {
   position: relative;
@@ -58,17 +59,17 @@ body {
 }
 #main-menu .menu-header p {
   max-width: 450px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #555;
 }
 #main-menu .menu-buttons .menu-btn {
-  background: linear-gradient(80deg, rgb(0, 129, 255) 50%, rgb(0, 164, 255) 100%);
   padding: 1rem;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  color: #fff;
+  color: hsl(11, 100%, 77%);
   font-size: 16px;
   font-weight: bold;
+  border: 3px solid hsl(11, 100%, 77%);
 }
 
 #game .game-over-container {
@@ -86,7 +87,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(24, 34, 69);
+  background: #f0f0f0;
   z-index: 10;
   padding: 3rem;
   border-radius: 5px;
@@ -177,58 +178,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: hsl(11, 100%, 77%);
 }
 .bingo-logo .logo-text {
   font-family: "TiltNeon" !important;
   font-weight: 400;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: hsl(11, 100%, 77%);
 }
 .bingo-logo .logo-text span:first-child {
   position: relative;
   font-size: 46px;
-  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f;
 }
 .bingo-logo .logo-text span:nth-child(2) {
   position: relative;
   font-size: 72px;
   left: -1px;
-  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f;
 }
 .bingo-logo .logo-text span:last-child {
   position: relative;
   top: -25px;
   left: -5px;
-  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f;
 }
 .bingo-logo .circle {
-  position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 52vh;
+  height: 52vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  border: 5px solid #fff;
-  box-shadow: inset 0 0 10px #fff, inset 5px 0 50px #f0f, inset -5px 0 50px #0ff, inset 5px 0 10px #f0f, inset -5px 0 10px #0ff, 0 0 10px #fff, -10px 0 50px #f0f, 10px 0 50px #0ff; /* outer right cyan */
-  animation: circle-spin 3.5s infinite linear;
+  background: #f0f0f0;
+}
+.bingo-logo .circle .inner-circle {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+  background: #f0f0f0;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
 }
 .bingo-logo .card {
   position: absolute;
-  left: 165px;
-  top: 20px;
+  left: 380px;
+  top: 350px;
   width: 110px;
   height: 130px;
-  border: 5px solid #fff;
+  border: 5px solid hsl(11, 100%, 77%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
   border-radius: 5px;
-  box-shadow: inset 0 0 1px #fff, inset 5px 0 30px #f0f, inset -5px 0 30px #0ff, inset 5px 0 5px #f0f, inset -5px 0 5px #0ff, 0 0 5px #fff, -5px 0 30px #f0f, 5px 0 30px #0ff; /* outer right cyan */
 }
 .bingo-logo .card .card-grid {
   position: relative;
   top: -6px;
-  border: 1px solid #fff;
+  border: 1px solid hsl(11, 100%, 77%);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   box-shadow: inherit;
@@ -237,4 +244,30 @@ body {
   border: inherit;
   width: 15px;
   height: 15px;
+}
+.bingo-logo .curve {
+  position: absolute;
+  width: 225px;
+  height: 100%;
+  left: 0;
+}
+.bingo-logo .curve::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  width: 55%;
+  height: 100%;
+  background: #f0f0f0;
+  transform: translate(-70%, -50%);
+}
+.bingo-logo .curve::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  width: 40%;
+  height: 75%;
+  background: hsl(11, 100%, 77%);
+  transform: translate(-30%, 57%);
 }/*# sourceMappingURL=styles.css.map */
