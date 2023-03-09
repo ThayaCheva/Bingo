@@ -10,7 +10,7 @@
 
 $main-background: #f0f0f0;
 $primary-color: #555;
-$second-background: hsl(11, 100%, 77%);
+$second-background: #ff9f8a;
 $game-background: rgba(255,255,255,0.5);
 $button-background: #F4E2C8;
 $desc-text: $primary-color;
@@ -25,19 +25,24 @@ $card-bg: rgb(185, 87, 87);
 
 body {
     font-family: 'TiltNeon', sans-serif;
-    background: $main-background;
-    overflow-y: hidden;
+    color: $primary-color;
 }
 
 .btn {
-    background: $button-background;
-    border: none;
-    border-radius: 5px;
     padding: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: $second-background;
     font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase;
+    border: 3px solid $second-background;
+    transition: all 0.3s ease-in;
     cursor: pointer;
+    &:hover {
+        background: $second-background;
+        color: $main-background;
+    }
 }
 
 #main-menu {
@@ -45,55 +50,132 @@ body {
     grid-template-columns: 1.5fr 1fr;
     width: 100vw;
     height: 100vh;
-    .main-container {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../img/wave-haikei.svg');
+    overflow-y: hidden;
+    .left-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
-
-    img {
-        width: 70%; 
-    }
-
-    .menu-header {
-        color: $primary-color;
-        margin-bottom: 3rem;
-        h1 {
-            line-height: 70px;
-            font-size: 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
+        .menu-header {
+            color: $primary-color;
             margin-bottom: 3rem;
-            span {
-                position: relative;
-                font-size: 128px;
-                left: -6px;
+            h1 {
+                line-height: 90px;
+                font-size: 32px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: center;
+                margin-bottom: 3rem;
+                span {
+                    position: relative;
+                    font-size: 160px;
+                    left: -9px;
+                }
+            }
+            p {
+                max-width: 550px;
+                font-size: 18px;
+                color: $desc-text;
             }
         }
-        p {
-            max-width: 450px;
-            color: $desc-text;
+    
+        .menu-buttons {
+            .menu-btn {
+                color: $second-background;
+                border: 3px solid $second-background;
+            }
         }
     }
 
-    .menu-buttons {
-        .menu-btn {
-            padding: 1rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            color: $second-background;
-            font-size: 16px;
-            font-weight: bold;
-            border: 3px solid $second-background;
+    .right-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .bingo-logo {
+            font-size: 86px;
+            .logo-text {
+                font-family: 'TiltNeon' !important;
+                font-weight: 400;
+                display: flex;
+                flex-direction: column;
+                color: $second-background;
+                span:first-child {
+                    position: relative;
+                    font-size: 46px;
+                }
+                span:nth-child(2) {
+                    position: relative;
+                    font-size: 72px;
+                    left: -1px;
+                }
+                span:last-child {
+                    position: relative;
+                    top: -25px;
+                    left: -5px;
+                }
+            }
+            .circle {
+                position: relative;
+                width: 25vw;
+                height: 25vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                background: $main-background;
+    
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -50px;
+                    left: 310px; 
+                    background: inherit;
+                    width: 10vw;
+                    height: 10vw;
+                    border-radius: 50%;
+                }
+            }
+            
+            .card {
+                position: absolute;
+                left: 240px;
+                top: 95px;
+                width: 110px;
+                height: 130px;
+                border: 5px solid $second-background;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: end;
+                border-radius: 15%;
+                .card-grid {
+                    position: relative;
+                    top: -6px;
+                    border: 1px solid $second-background;
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    box-shadow: inherit;
+                    .grid-items {
+                        border: inherit;
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
         }
     }
 }
 
 #game {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../img/layered-waves-haikei.svg');
     .game-over-container {
         position: absolute;
         width: 100%;
@@ -125,6 +207,10 @@ body {
         @include center;
         flex-direction: column; 
         padding: 3rem;
+        .start-btn {
+            color: $primary-color;
+            border: 3px solid $primary-color;
+        }
     }
     
     .game-card {
@@ -150,11 +236,13 @@ body {
 
 #card {
     width: 100%;
-    border: 1px solid #fff;
     padding: 1rem;
     margin: 3rem 0;
-    background: $card-bg;
     border-radius: 5%;
+    .container {
+        background: $second-background;
+        border: 1px solid #fff;
+    }
     .card-container {
         display: grid;
         grid-gap: 1rem;
@@ -191,110 +279,4 @@ body {
     }
 }
 
-@keyframes circle-spin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(359deg);}
-}
-
-.bingo-logo {
-    position: relative;
-    font-size: 86px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $second-background;
-    .logo-text {
-        font-family: 'TiltNeon' !important;
-        font-weight: 400;
-        display: flex;
-        flex-direction: column;
-        color: $second-background;
-        span:first-child {
-            position: relative;
-            font-size: 46px;
-        }
-        span:nth-child(2) {
-            position: relative;
-            font-size: 72px;
-            left: -1px;
-        }
-        span:last-child {
-            position: relative;
-            top: -25px;
-            left: -5px;
-        }
-    }
-    .circle {
-        width: 52vh;
-        height: 52vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        background: $main-background;
-
-        .inner-circle {
-            position: absolute;
-            top: 180px;
-            left: 450px;
-            background: $main-background;
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-        }
-    }
     
-    .card {
-        position: absolute;
-        left: 380px;
-        top: 350px;
-        width: 110px;
-        height: 130px;
-        border: 5px solid $second-background;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: end;
-        border-radius: 5px;
-        .card-grid {
-            position: relative;
-            top: -6px;
-            border: 1px solid $second-background;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            box-shadow: inherit;
-            .grid-items {
-                border: inherit;
-                width: 15px;
-                height: 15px;
-            }
-        }
-    }
-
-    .curve {
-        position: absolute;
-        width: 225px;
-        height: 100%;
-        left: 0;
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            border-radius: 100%;
-            width: 55%;
-            height: 100%;
-            background: $main-background;
-            transform: translate(-70%, -50%);
-        }
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            border-radius: 100%;
-            width: 40%;
-            height: 75%;
-            background: $second-background;
-            transform: translate(-30%, 57%);
-        }
-    }
-}

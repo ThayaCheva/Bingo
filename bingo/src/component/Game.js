@@ -54,7 +54,7 @@ export default function Game(props) {
             {bingo.isBingo && <div className="game-over-container">
                 <div className="game-over">
                     <h1>Player {bingo.player} has won!!</h1>
-                    <button className="btn" onClick={() => resetGame()}>Reset Game</button>
+                    <button className="btn" onClick={() => resetGame()}>New Game</button>
                 </div>
             </div>}
             <div className="game-container">
