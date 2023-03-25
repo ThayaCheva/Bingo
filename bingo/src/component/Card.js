@@ -1,23 +1,39 @@
 import React from 'react'
 import {nanoid} from 'nanoid'
 export default function Card(props) {
-    const [card, setCard] = React.useState(generateCard())
+    const [card, setCard] = React.useState([])
+    const [isGenerated, setIsGenerated] = React.useState(false)
 
+    
     React.useEffect(() => {
-        const isBingo = (bingoH() || bingoV() || bingoD())
-        if (isBingo) {
-            props.setBingo({player: props.player, isBingo: true})
+        generateCard()
+    }, [])
+    
+    React.useEffect(() => {
+        if (isGenerated) {
+            const isBingo = (bingoH() || bingoV() || bingoD())
+            if (isBingo) {
+                props.setBingo({player: props.player, isBingo: true})
+            }
         }
     }, [card])
 
     function generateCard() {
-        let arr = []
-        for (let i = 0; i < 25; i++) {
-            let num = Math.floor(Math.random() * 100) + 1
-            arr.push(genNum(num))
+        let nums = []
+        while (nums.length < 25) {
+            const rand = Math.floor(Math.random() * 100) + 1
+            if (!nums.includes(rand)) {
+                nums.push(rand)
+            }
         }
-        return arr
+        for (let i = 0; i < 25; i++) {
+            nums[i] = genNum(nums[i])
+        }
+        console.log(nums)
+        setCard(nums)
+        setIsGenerated(true)
     }
+
 
     function bingoH() {
         let maxCol = 5
@@ -85,7 +101,7 @@ export default function Card(props) {
     function getNewCard() {
         const gameStart = true
         if (gameStart) {
-            setCard(generateCard())
+            generateCard()
         }
     }
 

@@ -213,24 +213,34 @@ body {
         }
         .game-card {
             display: grid;
-            grid-template-columns: 0.5fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             column-gap: 5rem;
-            .prevNum {
-                border: 1px solid #fff;
-                border-radius: 15px;
-                padding: 1.5rem;
-                margin-top: 3rem;
-                .prevNum-container {
-                    display: grid;
-                    grid-template-columns: repeat(10, 1fr);
-                    padding: 1.5rem;    
+        }
+    }
+
+    .game-header {
+        display: flex;
+        * {
+            margin-right: 1rem;
+        }
+        .prevNum {
+            width: 25vw;
+            border-bottom: 1px solid #333;
+            .prevNum-container {
+                display: grid;
+                grid-template-columns: repeat(10, 1fr);
+                h1 {
+                    background: #ff9f8a;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
         }
     }
-    
-
-
 }
 
 #card {
@@ -251,6 +261,7 @@ body {
             border: none;
             align-self: flex-start;
             margin: 10px 0 0 10px;
+            cursor: pointer;
         }
     }
 

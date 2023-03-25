@@ -12,9 +12,9 @@ export default function Game() {
     function Timer() {
         const [time, setTime] = React.useState(10)
         React.useEffect(() => {
-            setTimeout(() => setTime(time - 1), 1000)
-            if (time === 1) {
-                setTime(10)
+            setTimeout(() => setTime(time - 1), 300)
+            if (time === 1 && prevNums.length < 100) {
+                setTime(3)
                 getBall()
             }
         }, [time])
@@ -39,8 +39,11 @@ export default function Game() {
         const index = ballNum.indexOf(num)
         const temp = [...ballNum]
         const removed = temp.splice(index, 1)
-        if (prevNums.length <= 100) {
+        if (prevNums.length < 3) {
             setPrevNums(arr => [...arr, removed])
+        }
+        else {
+            setPrevNums(arr => arr.filter(arr != arr[0]))
         }
         setCurrentBall(removed)
         setBallNum(temp)
@@ -56,16 +59,15 @@ export default function Game() {
             </div>}
             <div className="game-container">
                 <div className="game-header">
-                    <h1>Current Number: {currentBall}</h1>
                     {startGame && <Timer/>}
-                </div>
-                <div className="game-card">
+                    <h1>{currentBall}</h1>
                     <div className="prevNum">
-                        <h1>Previous Numbers ({100 - prevNums.length} Left)</h1>
                         <div className="prevNum-container">
-                            {prevNums.map(num => <p>{num}</p>)}
+                            {prevNums.map(num => <h1>{num}</h1>)}
                         </div>
                     </div>
+                </div>
+                <div className="game-card">
                     <Card player={1} startGame={startGame} setBingo={setBingo}/>
                     <Card player={2} startGame={startGame} setBingo={setBingo}/>
                 </div>
