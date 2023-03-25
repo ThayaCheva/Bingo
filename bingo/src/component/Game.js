@@ -1,7 +1,8 @@
 import React from 'react'
 import Card from './Card'
+import { Link } from 'react-router-dom'
 
-export default function Game(props) {
+export default function Game() {
     const [startGame, setStartGame] = React.useState(false)
     const [currentBall, setCurrentBall] = React.useState(0)
     const [prevNums, setPrevNums] = React.useState([])
@@ -44,36 +45,31 @@ export default function Game(props) {
         setCurrentBall(removed)
         setBallNum(temp)
     }
-
-    function resetGame() {
-        props.setStart(false)
-    }
     
     return (
         <section id="game">
             {bingo.isBingo && <div className="game-over-container">
                 <div className="game-over">
                     <h1>Player {bingo.player} has won!!</h1>
-                    <button className="btn" onClick={() => resetGame()}>New Game</button>
+                    <Link to="/"><button className="btn">New Game</button></Link>
                 </div>
             </div>}
             <div className="game-container">
                 <div className="game-header">
-                    <h1>BINGO</h1>
                     <h1>Current Number: {currentBall}</h1>
                     {startGame && <Timer/>}
                 </div>
                 <div className="game-card">
+                    <div className="prevNum">
+                        <h1>Previous Numbers ({100 - prevNums.length} Left)</h1>
+                        <div className="prevNum-container">
+                            {prevNums.map(num => <p>{num}</p>)}
+                        </div>
+                    </div>
                     <Card player={1} startGame={startGame} setBingo={setBingo}/>
                     <Card player={2} startGame={startGame} setBingo={setBingo}/>
                 </div>
                 {!startGame && <button className="btn start-btn" onClick={() => {setStartGame(prevState => !prevState)}}>START GAME</button>}
-                <div className="prevNum">
-                    <h1>Previous Numbers ({100 - prevNums.length} Left)</h1>
-                    <div className="prevNum-container">
-                        {prevNums.map(num => <p>{num}</p>)}
-                    </div>
-                </div>
             </div>
         </section>
     )

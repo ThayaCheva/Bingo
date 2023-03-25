@@ -1,14 +1,22 @@
 import React from 'react'
 import Main from './component/Main.js'
 import Game from './component/Game.js'
-function App() {
-  const [start, setStart] = React.useState(false)
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+function App() {
   return (
-    <div className="App">
-      {!start && <Main setStart={setStart}/>}
-      {start && <Game setStart={setStart}/>}
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Main/>
+          </Route>
+          <Route exact path="/game">
+            <Game/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

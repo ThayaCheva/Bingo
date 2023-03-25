@@ -100,15 +100,20 @@ export default function Card(props) {
     return (
         <section id="card">
             <div className="container">
-                <h2>PLAYER {props.player}</h2>
-                <div>BINGO</div>
+                {!props.startGame && <button className="new-btn" onClick={()=>getNewCard()}><p>↻</p></button>}
+                <div className="card-title">
+                    <p>B</p>
+                    <p>I</p>
+                    <p>N</p>
+                    <p>G</p>
+                    <p>O</p>
+                </div>
                 <div className="card-container">
                     {card.map(num => 
                         <button className={`num btn ${num.isMatched ? "matched" : ""}`} onClick={() => {setMatched(num.id)}}><p className="card-value">{num.value}</p></button>)
                     }
                 </div>
             </div>
-            {!props.startGame && <button className="btn start-btn" onClick={()=>getNewCard()}>New Card</button>}
         </section>
     )
 }   

@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Main(props) {
+export default function Main() {
     return (
         <section id="main-menu">
             <div className="left-container">
@@ -10,7 +11,7 @@ export default function Main(props) {
                         <p>Welcome to bingo, win by covering a complete horizontal, vertical or diagonal line. This game requires 2 people to play.</p>
                     </div>
                     <div className="menu-buttons">
-                        <button className="menu-btn btn" onClick={() => {props.setStart(true)}}>Play Now</button>
+                        <Link to="/game"><button className="menu-btn btn">Play Now</button></Link>
                     </div>
                 </div>
             </div>

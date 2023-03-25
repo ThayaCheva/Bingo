@@ -191,20 +191,19 @@ body {
   color: #555;
   border: 3px solid #555;
 }
-#game .game-card {
+#game .game-container .game-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1fr;
   -moz-column-gap: 5rem;
        column-gap: 5rem;
 }
-#game .prevNum {
-  width: 50%;
+#game .game-container .game-card .prevNum {
   border: 1px solid #fff;
   border-radius: 15px;
   padding: 1.5rem;
   margin-top: 3rem;
 }
-#game .prevNum .prevNum-container {
+#game .game-container .game-card .prevNum .prevNum-container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   padding: 1.5rem;
@@ -219,17 +218,39 @@ body {
 #card .container {
   background: #ff9f8a;
   border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+}
+#card .container .new-btn {
+  position: absolute;
+  background: none;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  align-self: flex-start;
+  margin: 10px 0 0 10px;
+}
+#card .card-title {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  margin: 1.5rem;
+}
+#card .card-title p {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 76px;
 }
 #card .card-container {
   display: grid;
-  grid-gap: 1rem;
   grid-template-columns: repeat(5, 1fr);
   margin: 1.5rem;
-  padding: 1rem;
 }
 #card .card-container .num {
-  width: 75px;
-  height: 75px;
+  height: 10vh;
   background: none;
   border: 1px solid #333;
   background: #fff;
