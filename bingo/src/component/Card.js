@@ -4,7 +4,6 @@ export default function Card(props) {
     const [card, setCard] = React.useState([])
     const [isGenerated, setIsGenerated] = React.useState(false)
 
-    
     React.useEffect(() => {
         generateCard()
     }, [])
