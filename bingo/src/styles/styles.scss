@@ -9,10 +9,10 @@
 }
 
 $main-background: #f0f0f0;
-$primary-color: #555;
-$second-background: #ff9f8a;
+$primary-color: #333;
+$second-background: #B2A4FF;
 $game-background: rgba(255,255,255,0.5);
-$button-background: #F4E2C8;
+$button-background: #FFDEB4;
 $desc-text: $primary-color;
 $neon-glow-text: 0 0 1px #fff, 0 0 5px #fff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f, 0 0 10px #0ff, 0 0 10px #f0f;
 $card-bg: rgb(185, 87, 87);
@@ -23,21 +23,17 @@ $card-bg: rgb(185, 87, 87);
     justify-content: center;
 }
 
-body {
+* {
     font-family: 'TiltNeon', sans-serif;
     color: $primary-color;
 }
 
 .btn {
+    background: $button-background;
     padding: 1rem;
+    border-radius: 50px;
     border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    color: $second-background;
     font-size: 16px;
-    font-weight: bold;
-    border: 3px solid $second-background;
-    transition: all 0.3s ease-in;
     cursor: pointer;
     &:hover {
         background: $second-background;
@@ -78,13 +74,6 @@ body {
                 max-width: 550px;
                 font-size: 18px;
                 color: $desc-text;
-            }
-        }
-    
-        .menu-buttons {
-            .menu-btn {
-                color: $second-background;
-                border: 3px solid $second-background;
             }
         }
     }
@@ -221,10 +210,6 @@ body {
         flex-direction: column; 
         width: 100%;
         height: 100%;
-        .start-btn {
-            color: $primary-color;
-            border: 3px solid $primary-color;
-        }
         .game-card {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -308,6 +293,7 @@ body {
             background: none;
             border: 1px solid #333;
             background: #fff;
+            border-radius: 5px;
             .card-value {
                 font-size: 36px;
                 color: #333;

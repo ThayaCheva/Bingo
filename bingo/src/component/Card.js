@@ -28,7 +28,6 @@ export default function Card(props) {
         for (let i = 0; i < 25; i++) {
             nums[i] = genNum(nums[i])
         }
-        console.log(nums)
         setCard(nums)
         setIsGenerated(true)
     }
@@ -56,7 +55,6 @@ export default function Card(props) {
             for (let row = col; row < 25; row += 5) {
                 if (card[row].isMatched) {
                     count += 1
-                    console.log(count)
                 }
                 if (count === 5) {
                     return true
@@ -104,11 +102,17 @@ export default function Card(props) {
         }
     }
 
-    function setMatched(id) {
+    function setMatched(num) {
         if (props.startGame) {
-            setCard(oldCard => oldCard.map(card => {
-                return card.id === id ? {...card, isMatched: !card.isMatched} : card
-            }))
+            if (!props.ballArray.includes(num.value)) {
+                setCard(oldCard => oldCard.map(card => {
+                    return card.id === num.id ? {...card, isMatched: !card.isMatched} : card
+                }))
+            }
+            else {
+                alert("You can't do that!")
+            }
+            console.log(props.ballArray)
         }
     }
 
@@ -125,7 +129,7 @@ export default function Card(props) {
                 </div>
                 <div className="card-container">
                     {card.map(num => 
-                        <button className={`num btn ${num.isMatched ? "matched" : ""}`} onClick={() => {setMatched(num.id)}}><p className="card-value">{num.value}</p></button>)
+                        <button className={`num ${num.isMatched ? "matched" : ""}`} onClick={() => {setMatched(num)}}><p className="card-value">{num.value}</p></button>)
                     }
                 </div>
             </div>

@@ -7,25 +7,21 @@
   font-family: "TiltNeon";
   src: url("../fonts/TiltNeon-Regular.ttf") format("truetype");
 }
-body {
+* {
   font-family: "TiltNeon", sans-serif;
-  color: #555;
+  color: #333;
 }
 
 .btn {
+  background: #FFDEB4;
   padding: 1rem;
+  border-radius: 50px;
   border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #ff9f8a;
   font-size: 16px;
-  font-weight: bold;
-  border: 3px solid #ff9f8a;
-  transition: all 0.3s ease-in;
   cursor: pointer;
 }
 .btn:hover {
-  background: #ff9f8a;
+  background: #B2A4FF;
   color: #f0f0f0;
 }
 
@@ -44,7 +40,7 @@ body {
   justify-content: center;
 }
 #main-menu .left-container .menu-header {
-  color: #555;
+  color: #333;
   margin-bottom: 3rem;
 }
 #main-menu .left-container .menu-header h1 {
@@ -64,17 +60,13 @@ body {
 #main-menu .left-container .menu-header p {
   max-width: 550px;
   font-size: 18px;
-  color: #555;
-}
-#main-menu .left-container .menu-buttons .menu-btn {
-  color: #ff9f8a;
-  border: 3px solid #ff9f8a;
+  color: #333;
 }
 #main-menu .right-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ff9f8a;
+  background: #B2A4FF;
 }
 #main-menu .right-container .bingo-logo {
   font-size: 86px;
@@ -84,7 +76,7 @@ body {
   font-weight: 400;
   display: flex;
   flex-direction: column;
-  color: #ff9f8a;
+  color: #B2A4FF;
 }
 #main-menu .right-container .bingo-logo .logo-text span:first-child {
   position: relative;
@@ -126,7 +118,7 @@ body {
   top: 95px;
   width: 110px;
   height: 130px;
-  border: 5px solid #ff9f8a;
+  border: 5px solid #B2A4FF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +128,7 @@ body {
 #main-menu .right-container .bingo-logo .card .card-grid {
   position: relative;
   top: -6px;
-  border: 1px solid #ff9f8a;
+  border: 1px solid #B2A4FF;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   box-shadow: inherit;
@@ -179,7 +171,7 @@ body {
 #game .timer {
   position: absolute;
   background: #f0f0f0;
-  border: 5px solid #ff9f8a;
+  border: 5px solid #B2A4FF;
   width: 150px;
   height: 150px;
   margin: 3rem;
@@ -199,10 +191,6 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-}
-#game .game-container .start-btn {
-  color: #555;
-  border: 3px solid #555;
 }
 #game .game-container .game-card {
   display: grid;
@@ -241,7 +229,7 @@ body {
   border-radius: 5%;
 }
 #card .container {
-  background: #ff9f8a;
+  background: #B2A4FF;
   border: 3px solid #fff;
   display: flex;
   flex-direction: column;
@@ -282,6 +270,7 @@ body {
   background: none;
   border: 1px solid #333;
   background: #fff;
+  border-radius: 5px;
 }
 #card .card-container .num .card-value {
   font-size: 36px;

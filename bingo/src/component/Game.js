@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Game() {
     const [startGame, setStartGame] = React.useState(false)
     const [prevNums, setPrevNums] = React.useState([])
-    const [ballNum, setBallNum] = React.useState(generateBalls())
+    const [ballArray, setBallArray] = React.useState(generateBalls())
     const [bingo, setBingo] = React.useState({player: 1, isBingo: false})
 
     function Timer() {
@@ -13,7 +13,6 @@ export default function Game() {
         React.useEffect(() => {
             setTimeout(() => setTime(time - 1), 1000)
             if (time === 0 && prevNums.length < 100) {
-                setTime(3)
                 getBall()
             }
         }, [time])
@@ -30,13 +29,13 @@ export default function Game() {
     }
 
     function getBall() {
-        const num = Math.floor(Math.random() * (ballNum.length)) + 1
+        const num = Math.floor(Math.random() * (ballArray.length)) + 1
         removeBall(num)
     }
     
     function removeBall(num) {
-        const index = ballNum.indexOf(num)
-        const temp = [...ballNum]
+        const index = ballArray.indexOf(num)
+        const temp = [...ballArray]
         const removed = temp.splice(index, 1)
         if (prevNums.length < 5) {
             setPrevNums(arr => [...arr, removed])
@@ -45,7 +44,7 @@ export default function Game() {
             setPrevNums(arr => arr.filter(i => i != prevNums[0]))
             setPrevNums(arr => [...arr, removed])
         }
-        setBallNum(temp)
+        setBallArray(temp)
     }
     
     return (
@@ -57,7 +56,7 @@ export default function Game() {
                 </div>
             </div>}
             <div className="timer">
-                    {startGame && <Timer/>}
+                    {startGame ? <Timer/> : <h1>0</h1>}
             </div>
             <div className="game-container">
                 <div className="game-header">
@@ -68,8 +67,8 @@ export default function Game() {
                     </div>
                 </div>
                 <div className="game-card">
-                    <Card player={1} startGame={startGame} setBingo={setBingo}/>
-                    <Card player={2} startGame={startGame} setBingo={setBingo}/>
+                    <Card player={1} startGame={startGame} setBingo={setBingo} ballArray={ballArray}/>
+                    <Card player={2} startGame={startGame} setBingo={setBingo} ballArray={ballArray}/>
                 </div>
                 {!startGame && <button className="btn start-btn" onClick={() => {setStartGame(prevState => !prevState)}}>START GAME</button>}
             </div>
