@@ -4,57 +4,31 @@ import { Link } from 'react-router-dom'
 export default function Main() {
     return (
         <section id="main-menu">
-            <div className="left-container">
+            <div className="top-container">
+                <nav>
+                    <h1>BALLAE</h1>
+                    <ul>
+                        <a>HOME</a>
+                        <a>ABOUT</a>
+                        <a>CONTACT</a>
+                        <a>TERMS</a>   
+                        <a>SIGN UP</a>   
+                    </ul>
+                </nav>
                 <div className="menu-container">
+                
                     <div className="menu-header">
-                        <h1>CASUAL<span>BINGO</span></h1>
-                        <p>Welcome to bingo, win by covering a complete horizontal, vertical or diagonal line. This game requires 2 people to play.</p>
+                        <h1>BINGO</h1>
+                        <p>Welcome to our online bingo world, where the numbers never stop rolling and the fun never ends! Our website is dedicated to bringing you the ultimate bingo experience, with a wide variety of games, generous bonuses, and exciting prizes.</p>
                     </div>
+
                     <div className="menu-buttons">
-                        <Link to="/game"><button className="menu-btn btn">Play Now</button></Link>
+                        <Link to="/game" className="menu-btn btn"><button>Play Now</button></Link>
+                        <Link to="/game" className="menu-btn btn"><button>Leaderboard</button></Link>
                     </div>
                 </div>
             </div>
-            <div className="right-container">
-                <div className="bingo-logo">
-                    <div className="circle">
-                        <h1 className="logo-text">
-                            <span>Let's</span>
-                            <span>Play</span>
-                            <span>Bingo</span>
-                        </h1>
-                        <div className="card">
-                            <div className="card-grid">
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                                <div className="grid-items"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div className="bottom-container">test</div>
         </section>
     )
 }
